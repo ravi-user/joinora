@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                    </div>
+                    <h2 class="mb-3">Payment Successful!</h2>
+                    <p class="lead mb-4">Thank you for your payment. Your account has been activated successfully.</p>
+                    
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Welcome to Joinora!</h4>
+                        <p>Your account has been successfully created and activated. You can now access all the features.</p>
+                        <hr>
+                        <p class="mb-0">We've sent a confirmation email to <strong>{{ user.email }}</strong> with your account details.</p>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <a href="/" class="btn btn-primary me-md-2">Go to Dashboard</a>
+                        <a href="/profile/" class="btn btn-outline-secondary">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

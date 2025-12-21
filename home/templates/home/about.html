@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+
+{% load static %}
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JOINORA | About  </title>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-liberty.css' %}">
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="index.html">
+                        <span class="w3yellow">Join</span>ora
+                    </a></h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'about' %}">About</a>
+                        </li>
+                        
+                    </ul>
+                    <!--/search-right-->
+                    
+                    <!--//search-right-->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//Header-->
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5">
+            <div class="container">
+                <div class="w3breadcrumb-right">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active"><span class="fas fa-angle-double-right mx-2"></span> About</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--//inner-page-->
+    <!--/w3-grids-->
+    <section class="w3l-passion-mid-sec py-5">
+        <div class="container py-md-5 py-3">
+            <div class="container">
+                <div class="row w3l-passion-mid-grids mb-5 pb-lg-5">
+                    <div class="col-lg-6 w3hny-passion-item">
+                        <img src="{% static 'assets/images/g3.jpg' %}" alt="" class="img-fluid radius-image">
+                    </div>
+                    <div class="col-lg-6 passion-grid-item-info ps-lg-5 mt-lg-0 mt-5">
+                        <h6 class="title-subw3hny mb-1">About Us</h6>
+                        <h3 class="title-w3l mb-4">
+                            Designed for community growth and trusted connections</h3>
+                        <p class="mt-3 pe-lg-5">Whether you’re new to jobs, looking for part-time work, or hiring skilled people — there’s a place for you here..</p>
+
+                    </div>
+
+                </div>
+                <div class="row w3l-passion-mid-grids">
+                    <div class="col-lg-6 passion-grid-item-info pe-lg-5 mb-lg-0 mb-5">
+                        <h6 class="title-subw3hny mb-1">Why Us</h6>
+                        <h3 class="title-w3l mb-4">Local • Easy • Trusted</h3>
+                        <ul class="mt-3 pe-lg-5" style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 6px;">✔ One platform for all job and work needs</li>
+                        <li style="margin-bottom: 6px;">✔ Connect with nearby opportunities</li>
+                        <li style="margin-bottom: 6px;">✔ Clear pricing and role definitions</li>
+                        <li style="margin-bottom: 6px;">✔ Build your professional presence</li>
+                        <li style="margin-bottom: 6px;">✔ Support for every kind of worker</li>
+                    </ul>
+
+
+                    </div>
+                    <div class="col-lg-6 w3hny-passion-item">
+                        <img src="assets/images/g2.jpg" alt="" class="img-fluid radius-image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--//w3-grids-->
+    <!-- /home-page-video-popup-->
+    <section class="w3l-index5 py-5" id="info">
+        <div class="container py-md-5">
+            <div class="abpagecontent-1-info">
+                <h6 class="title-subw3hny mb-1">Our Info</h6>
+                <h3 class="title-w3l two mb-3">We help people connect with people. </h3>
+                <p class="text-para">Our goal is to make collaboration easy—whether you’re looking for work, hiring talent, or building your career. By connecting local talent with real opportunities, we help people grow, learn, and succeed together.
+                </p>
+                <p class="text-para mt-3"> Our mission is to support career growth by creating opportunities for collaboration, employment, and skill sharing</p>
+                <p class="text-para mt-3">We believe strong communities create great careers..
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- //home-page-video-popup-->
+
+    <!-- features section -->
+    
+    <!--//features section -->
+    <!--/Team-->
+    <section class="w3l-team py-5" id="team">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row team-row">
+                <div class="col-lg-6 team-wrap-info pe-lg-5">
+                    <h6 class="title-subw3hny">Our Experts</h6>
+                    <h3 class="title-w3l mb-md-4 mb-2">Meet the Team</h3>
+                    <p class="text-para pe-lg-5">Curabitur id gravida risus. Fusce eget ex fermentum, ultricies nisi ac sed,
+                        lacinia est. Quisque ut lectus consequat, venenatis eros et, sed commodo risus. Nullam sit
+                        amet laoreet elit. Suspendisse non init magnaa velit efficitur, dolor eget ex fermentum.
+                    </p>
+                    <a href="#url" class="btn btn-primary btn-style mt-lg-5 mt-4">Join Us</a>
+                </div>
+                <!--start-team member -->
+                <div class="col-lg-3 col-sm-6 team-wrap mt-lg-0 mt-5">
+                    <div class="team-member last text-center">
+                        <div class="team-img">
+                            <img src="assets/images/team3.jpg" alt="" class="img-fluid radius-image" />
+                            <div class="overlay">
+                                <div class="team-details text-center">
+                                    <p>
+                                        Our web design team will spend time with our digital marketing team.
+                                    </p>
+                                    <div class="socials mt-4">
+                                        <a href="#url"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#url"><i class="fab fa-twitter"></i></a>
+                                        <a href="#url"><i class="fab fa-instagram"></i></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#team">
+                            <h6 class="team-title">Charlotte Ava</h6>
+                        </a>
+                        <p>Founder</p>
+                    </div>
+                </div>
+                <!-- end team member -->
+
+                <div class="col-lg-3 col-sm-6 team-wrap mt-lg-0 mt-5">
+                    <div class="team-member last text-center">
+                        <div class="team-img">
+                            <img src="assets/images/team2.jpg" alt="" class="img-fluid radius-image" />
+                            <div class="overlay">
+                                <div class="team-details text-center">
+                                    <p>
+                                        Our web design team will spend time with our digital marketing team.
+                                    </p>
+                                    <div class="socials mt-4">
+                                        <a href="#url"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#url"><i class="fab fa-twitter"></i></a>
+                                        <a href="#url"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#team">
+                            <h6 class="team-title">Emma Susan</h6>
+                        </a>
+                        <p>Designer</p>
+                    </div>
+                </div>
+                <!-- end team member -->
+
+            </div>
+        </div>
+    </section>
+    <!--//Team-->
+
+
+
+    <!--/w3l-footer-29-main-->
+    <footer class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 footer-list-29 footer-1 pe-lg-5">
+                        <h2><a class="navbar-brand" href="index.html">
+                                <span class="w3yellow">Join</span>Ora.</a></h2>
+                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">Lorem ipsum dolor sit, amet consectetur elit. Earum mollitia cum
+                            ex
+                            ipsam autem!earum sequi amet.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-4 footer-list-29 footer-3 mt-lg-0 mt-5 pe-lg-5">
+                        <h6 class="footer-title-29">Quick Links</h6>
+                        <div class="footer-listw3-grids">
+                            <ul class="footer-listw3">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="blog.html">Blogs</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+
+                            </ul>
+                            <ul class="footer-listw3">
+                                <li><a href="#privacy">Privacy Policy</a></li>
+                                <!-- <li><a href="#term">Terms of use</a></li>
+                                <li><a href="#sales">Sales and Refunds</a></li>
+                                <li><a href="#faq">FAQ</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Keep Connected</h6>
+                        <p>Get Updates By Join Our Platform</p>
+
+                        <!-- <form action="#" class="subscribe" method="post">
+                            <input type="email" name="email" placeholder="Your Email Address" required="">
+                            <button><span class="fas fa-paper-plane"></span></button>
+                        </form>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="#facebook" class="facebook"><span class="fab fa-facebook-f"></span></a>
+                            <a href="#twitter" class="twitter"><span class="fab fa-twitter"></span></a>
+                            <a href="#pinterest"><span class="fab fa-pinterest-p"></span></a>
+                            <a href="#instagram" class="instagram"><span class="fab fa-instagram"></span></a>
+                            <a href="#google" class="google"><span class="fab fa-google-plus-g"></span></a>
+                            <a href="#linkd" class="linkd"><span class="fab fa-linkedin-in"></span></a>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- <div class="bottom-copies text-center">
+                    <p class="copy-footer-29">© 2021 Intrados. All rights reserved .</p>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-angle-up"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+        </script>
+        <!-- //move top -->
+    </footer>
+    <!-- Template JavaScript -->
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/theme-change.js' %}"></script>
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!-- //bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

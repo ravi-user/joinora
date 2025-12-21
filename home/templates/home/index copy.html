@@ -1,0 +1,1489 @@
+<!doctype html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JOINORA  </title>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-liberty.css' %}">
+    <style>
+        /* Popup overlay - initially hidden */
+        .pop-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Show popup when active */
+        .pop-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        /* Popup content */
+        .popup {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #ff9e00;
+        }
+        
+        /* Form styling */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-control, .form-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+        
+        .btn-style {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #ff9e00;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e08a00;
+        }
+    </style>
+    <style>
+        /* Hide popup by default */
+        .pop-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Show popup when targeted */
+        .pop-overlay:target {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Popup content styling */
+        .popup {
+            background: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .close:hover {
+            color: #ff9e00;
+        }
+    </style>
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="index.html">
+                        <span class="w3yellow">Join</span>ora
+                    </a></h1>
+                    
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'services' %}">Services</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#Pages" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pages <span class="fa fa-angle-down ms-1"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item pt-2" href="blog.html">Blog Page</a></li>
+                                <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
+
+                                <li><a class="dropdown-item" href="email.html">Email Page</a></li>
+                                <li><a class="dropdown-item" href="elements.html">Elements</a></li>
+
+                                <li><a class="dropdown-item" href="landing.html">Landing Page</a></li>
+
+                                <li><a class="dropdown-item" href="error.html">Error Page</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <!--/search-right-->
+                    <ul class="header-search me-lg-4">
+                        <li class="search-right">
+                            <a href="#join-now" class="btn btn-style btn-primary search-btn" title="Join"><span class="fas fa-user-plus me-2" aria-hidden="true"></span> Join</a>
+                            <!-- search popup -->
+                            <div id="join-now" class="pop-overlay">
+                                <div class="popup">
+                                    <h3 class="title-w3l two mb-4">Join Us Now</h3>
+                                    <form method="POST" class="needs-validation" id="joinForm" novalidate>
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your first name
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your last name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid email address
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Contact Number" pattern="[0-9]{10}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid 10-digit phone number
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <select class="form-select" id="user_type" name="user_type" required>
+                                                <option value="" selected disabled>Select Type</option>
+                                                <option value="worker">Worker (₹99)</option>
+                                                <option value="owner">Owner (₹199)</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select a user type
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text">₹</span>
+                                                <input type="text" class="form-control" id="amount" name="amount" value="" readonly required>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please select a user type to see the amount
+                                            </div>
+                                        </div>
+                                        <button type="submit" id="rzp-button" class="btn btn-primary w-100">Proceed to Payment</button>
+                                    </form>
+                                    <script>
+                                        // Form validation
+                                        (function() {
+                                            'use strict';
+                                            const forms = document.querySelectorAll('.needs-validation');
+                                            
+                                            // Update amount based on user type
+                                            document.getElementById('userType').addEventListener('change', function() {
+                                                const amountField = document.getElementById('amount');
+                                                if (this.value === 'worker') {
+                                                    amountField.value = '99';
+                                                } else if (this.value === 'owner') {
+                                                    amountField.value = '199';
+                                                } else {
+                                                    amountField.value = '';
+                                                }
+                                            });
+
+                                            // Form validation
+                                            Array.from(forms).forEach(function(form) {
+                                                form.addEventListener('submit', function(event) {
+                                                    if (!form.checkValidity()) {
+                                                        event.preventDefault();
+                                                        event.stopPropagation();
+                                                    }
+                                                    
+                                                    // Additional validation for amount
+                                                    const amountField = document.getElementById('amount');
+                                                    if (!amountField.value) {
+                                                        amountField.setCustomValidity('Please select a user type');
+                                                    } else {
+                                                        amountField.setCustomValidity('');
+                                                    }
+                                                    
+                                                    form.classList.add('was-validated');
+                                                }, false);
+                                            });
+                                        })();
+                                    </script>
+                                    <!-- <div class="quick-links-side follow-us mt-5 text-center">
+                                        <h5 class="title-side mb-3">Follow Us</h5>
+                                        <ul class="social-icons-top">
+                                            <li><a href="#url" class="twitter"><span class="fab fa-twitter"></span></a></li>
+                                            <li><a href="#url" class="facebook"><span class="fab fa-facebook-f"></span></a></li>
+                                            <li><a href="#url" class="linkedin"><span class="fab fa-linkedin-in"></span></a></li>
+                                            <li><a href="#url" class="instagram"><span class="fab fa-instagram"></span></a></li>
+                                        </ul>
+                                    </div> -->
+
+                                </div>
+                                <a class="close" href="#close">×</a>
+                            </div>
+                            <!-- /search popup -->
+                        </li>
+
+                    </ul>
+                    <!--//search-right-->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//Header-->
+    <!--/Banner-Start-->
+    <!-- main-slider -->
+    <section class="w3l-main-slider banner-slider position-relative" id="home">
+        <div class="owl-one owl-carousel owl-theme">
+            <div class="item">
+                <div class="slider-info banner-view banner-top1">
+                    <div class="container">
+                        <div class="banner-info header-hero-19">
+                            <h5>Inspirational interiors</h5>
+                            <h3 class="title-hero-19">Interior Designs.</h3>
+
+                            <a href="#banner-join-now" class="btn btn-style btn-banner mt-sm-5 mt-4">Join Now </a>
+                            <!-- banner join now popup -->
+                            <div id="banner-join-now" class="pop-overlay">
+                                <div class="popup">
+                                    <h3 class="title-w3l two mb-4">Join Us Now</h3>
+                                    <form method="POST" class="needs-validation" id="bannerJoinForm" novalidate>
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                                    <div class="invalid-feedback">Please enter your name</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                                    <div class="invalid-feedback">Please enter a valid email</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="form-group">
+                                                    <input type="tel" class="form-control" name="contact" placeholder="Contact Number" required>
+                                                    <div class="invalid-feedback">Please enter your contact number</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="form-group">
+                                                    <select class="form-select" name="role" required>
+                                                        <option value="" selected disabled>Select Role & Price</option>
+                                                        <option value="Job Seeker - ₹99">Job Seeker - ₹99</option>
+                                                        <option value="Joiner - ₹149">Joiner - ₹149</option>
+                                                        <option value="Part Time - ₹199">Part Time - ₹199</option>
+                                                        <option value="Employer - ₹249">Employer - ₹249</option>
+                                                        <option value="Freelancer - ₹249">Freelancer - ₹249</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Please select a role</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-4">
+                                                <button type="submit" class="btn btn-style btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <a class="close" href="#close">×</a>
+                            </div>
+                            <!-- /banner join now popup -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} <div class="item">
+                <div class="slider-info banner-view banner-top2">
+                    <div class="container">
+                        <div class="banner-info header-hero-19">
+                            <h5>Designing Dreams</h5>
+                            <h3 class="title-hero-19">Decorate ideas</h3>
+
+                            <a href="about.html" class="btn btn-style btn-banner mt-sm-5 mt-4">Read More </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider-info banner-view banner-top3">
+                    <div class="container">
+                        <div class="banner-info header-hero-19">
+                            <h5>Inspirational interiors</h5>
+                            <h3 class="title-hero-19">Interior Designs.</h3>
+
+                            <a href="about.html" class="btn btn-style btn-banner mt-sm-5 mt-4">Read More </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider-info banner-view banner-top4">
+                    <div class="container">
+                        <div class="banner-info header-hero-19">
+                            <h5>Designing Dreams</h5>
+                            <h3 class="title-hero-19">Decorate ideas</h3>
+
+                            <a href="about.html" class="btn btn-style btn-banner mt-sm-5 mt-4">Read More </a>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+        </div>
+        <!--/banner-w3l-media-sec-->
+        <div class="banner-w3l-media-sec">
+            <div class="banner-w3l-media-title">
+                <h3 class="title-w3l two">Reflect your style</h3>
+            </div>
+            <div class="banner-w3l-media-title second-2">
+                <p class="">Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in
+                    ligula. Semper at tempufddfel.</p>
+            </div>
+            <div class="banner-w3l-media-title img-vdohny text-center p-0">
+                <div class="position-relative">
+                    <a href="#small-dialog" class="popup-with-zoom-anim play-view text-center">
+                        <span class="video-play-icon">
+                            <span class="fa fa-play"></span>
+                        </span>
+                    </a>
+                    <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                    <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                        <iframe src="https://player.vimeo.com/video/18696821" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//banner-w3l-media-sec-->
+    </section>
+    <!-- //main-slider -->
+    <!--/bottom-3-grids-->
+    <div class="w3l-3-grids py-5" id="grids-3">
+        <div class="container py-md-5 py-2">
+            <!--/row-1-->
+            <div class="row mb-5 pb-lg-4">
+                <div class="col-lg-6 pe-lg-5">
+                    <div class="title-content text-left">
+                        <h6 class="title-subw3hny mb-1">About Us</h6>
+                        <h3 class="title-w3l">We provide you the quality with perfect credibility </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4 ps-lg-5">
+
+                    <p class="pr-lg-5">Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
+                        ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet
+                        elit. Non quae, fugiat nihil ad. Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <!--//row-1-->
+            <div class="row pt-md-0 pt-5">
+                <div class="col-lg-4 col-md-6 mt-md-0 mt-sm-4 px-lg-0">
+                    <div class="grids3-info position-relative">
+                        <a href="#" class="d-block zoom"><img src="{% static 'assets/images/g8.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <div class="w3-grids3-info">
+                            <h6><a href="#category" class="category d-block">Living</a></h6>
+                            <h4><a href="#">Meet the new creativity</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-md-0 mt-4 px-lg-0 grids3-info2">
+                    <div class="grids3-info second position-relative">
+                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g2.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <div class="w3-grids3-info second">
+                            <h6><a href="#category" class="category d-block">Designs</a></h6>
+                            <h4><a href="#">Interior that reflects you</a></h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-lg-0 mt-4 px-lg-0">
+                    <div class="grids3-info position-relative">
+                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g4.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <div class="w3-grids3-info">
+                            <h6><a href="#category" class="category d-block">Innovative</a></h6>
+                            <h4><a href="#">Innovative stylish ideas</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//bottom-3-grids-->
+
+       <!-- /home-page-video-popup-->
+    <section class="w3l-index5 py-5" id="video">
+        <div class="container py-5">
+            <div class="history-info align-self text-center py-md-5">
+                <div class="position-relative py-sm-5">
+                    <a href="#small-dialog1" class="popup-with-zoom-anim play-view text-center position-absolute">
+                        <span class="video-play-icon">
+                            <span class="fa fa-play"></span>
+                        </span>
+                    </a>
+                    <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                    <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
+                        <iframe src="https://player.vimeo.com/video/444201456" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //home-page-video-popup-->
+
+    <!--/w3-grids-->
+    <section class="w3l-passion-mid-sec py-5">
+        <div class="container py-md-5 py-3">
+            <div class="container">
+                <div class="row w3l-passion-mid-grids">
+                    <div class="col-lg-6 passion-grid-item-info pe-lg-5 mb-lg-0 mb-5">
+
+                        <div class="content-8-img"><img src="{% static 'assets/images/ab1.jpg' %}" class="img-fluid radius-image" alt=""></div>
+                    </div>
+                    <div class="col-lg-6 w3hny-passion-item w3l-content-8">
+                        <h6 class="title-subw3hny mb-1">What We Offer</h6>
+                        <h3 class="title-w3l mb-3">The Luxury Apartment of sepcial interiors.</h3>
+                        <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non ipsum soluta
+                            perferendis
+                            veniam qui esse magnam commodi quisquam vitae labore nemo at voluptatem.</p>
+                        <ul class="w3-list-icons-grids">
+                            <li class="icon-list-item-gd">
+                                <div class="icon-gd"><i aria-hidden="true" class="fas fa-hotel"></i>
+                                </div>
+                                <div class="icon-inf">
+                                    <h5>Residential</h5>
+                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                </div>
+                            </li>
+                            <li class="icon-list-item-gd">
+                                <div class="icon-gd"><i aria-hidden="true" class="fas fa-door-open"></i>
+                                </div>
+                                <div class="icon-inf">
+                                    <h5>Commercial</h5>
+                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                </div>
+                            </li>
+                            <li class="icon-list-item-gd">
+                                <div class="icon-gd"><i aria-hidden="true" class="fas fa-industry"></i>
+                                </div>
+                                <div class="icon-inf">
+                                    <h5>Industries</h5>
+                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                </div>
+                            </li>
+                            <li class="icon-list-item-gd">
+                                <div class="icon-gd"><i aria-hidden="true" class="fas fa-building"></i>
+                                </div>
+                                <div class="icon-inf">
+                                    <h5>Office</h5>
+                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="w3banner-content-btns">
+                            <a href="about.html" class="btn btn-style btn-primary mt-lg-5 mt-4 me-2">Read More </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--//w3-grids-->
+    <!--/Gallery-Section-->
+    <section class="w3l-gallery" id="gallery">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5 py-md-4 py-2 HomePageGallery">
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny text-center">Gallery</h6>
+                    <h3 class="title-w3l mb-5 text-center">Latest Projects</h3>
+                </div>
+                <!--/grids-grids-->
+                <ul class="gallery_agile">
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a href="{% static 'assets/images/ab1.jpg' %}">
+                                <img src="{% static 'assets/images/ab1.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w3_agile_portfolio_grid mt-4">
+                            <a href="{% static 'assets/images/g4.jpg' %}">
+                                <img src="{% static 'assets/images/g4.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a href="{% static 'assets/images/g3.jpg' %}">
+                                <img src="{% static 'assets/images/g3.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w3_agile_portfolio_grid mt-4">
+                            <a href="{% static 'assets/images/ab3.jpg' %}">
+                                <img src="{% static 'assets/images/ab3.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a href="{% static 'assets/images/g2.jpg' %}">
+                                <img src="{% static 'assets/images/g2.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w3_agile_portfolio_grid mt-4">
+                            <a href="{% static 'assets/images/ab2.jpg' %}">
+                                <img src="{% static 'assets/images/ab2.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3><i class="fas fa-search"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <!--//rids-grids-->
+            </div>
+        </div>
+    </section>
+    <!--//Gallery-Section-->
+    <!--/w3l-midslider-->
+    <section class="w3l-midslider py-5" id="midslider">
+        <!-- /grids -->
+        <div class="container py-md-5">
+            <div class="row">
+                <div class="col-lg-5 title-content text-left pe-lg-5 mb-lg-0 mb-5">
+                    <h6 class="title-subw3hny mb-1">Stats</h6>
+                    <h3 class="title-w3l mb-3">Modern Of Living</h3>
+                    <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non ipsum soluta
+                        perferendis
+                        veniam qui esse magnam commodi quisquam vitae labore nemo at voluptatem.</p>
+                    <div class="row w3l-stats-section stats-con mt-4" id="stats">
+                        <div class="col-6 stats_info counter_grid">
+                            <p class="counter">1500 </p>
+                            <h3>PRojects</h3>
+                        </div>
+                        <div class="col-6 stats_info counter_grid">
+                            <p class="counter">2360</p>
+                            <h3>Awards</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /grids -->
+                <div class="col-lg-7 testimonial-width midslider-width ps-lg-3">
+                    <div id="owl-demo2" class="owl-three owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab1.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab2.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab3.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab4.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab5.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mid-slider-content">
+                                <img src="{% static 'assets/images/ab6.jpg' %}" class="img-fluid radius-image" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /grids -->
+        </div>
+    </section>
+    <!--//w3l-midslider-->
+
+    <!-- /blog-grids -->
+    <section class="w3l-text-11 py-5 pt-0">
+        <div class="text11 py-md-5 py-2 pt-0">
+            <div class="container">
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny text-center">Blog</h6>
+                    <h3 class="title-w3l mb-3 text-center">Latest Posts</h3>
+                </div>
+                <div class="row text11-content">
+                    <div class="col-lg-4 item mt-5">
+                        <div class="card">
+                            <div class="card-header p-0 position-relative border-0">
+                                <a href="blog-single.html">
+                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g7.jpg' %}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body p-0 blog-details">
+                                <h6 class="mt-4">July 12, 2021</h6>
+                                <a href="#admin" class="admin">- by Admin </a>
+                                <br>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice of interior design </a>
+                                <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
+                                <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 item mt-5">
+                        <div class="card">
+                            <div class="card-header p-0 position-relative border-0">
+                                <a href="blog-single.html">
+                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g8.jpg' %}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body p-0 blog-details">
+                                <h6 class="mt-4">July 22, 2021</h6>
+                                <a href="#admin" class="admin">- by Admin </a>
+                                <br>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Choose the style, we complete with our file </a>
+                                <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
+                                <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 item mt-5">
+                        <div class="card">
+                            <div class="card-header p-0 position-relative border-0">
+                                <a href="blog-single.html">
+                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g6.jpg' %}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body p-0 blog-details">
+                                <h6 class="mt-4">July 25, 2021</h6>
+                                <a href="#admin" class="admin">- by Admin </a>
+                                <br>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice of interior design </a>
+                                <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
+                                <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /grids -->
+            </div>
+
+        </div>
+    </section>
+    <!-- //blog-grids -->
+    <!--/w3l-project-->
+    <section class="w3l-join-main py-5">
+        <div class="container py-md-3">
+            <div class="w3l-project-in">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="bottom-info">
+                            <div class="header-section pe-lg-5">
+                                <h5 class="title-subw3hny mb-3">Invite Your Friends</h5>
+                                <h3 class="title-w3l mb-3">Refer and Get Free Services
+                                </h3>
+                                <p>Lorem ipsum dolor sit amet elit. Velit beatae rem ullam dolore nisi esse quasi, sit
+                                    amet. Lorem ipsum
+                                    dolor sit amet elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 align-self mt-lg-0 mt-sm-5 mt-4">
+                        <div class="w3l-buttons d-sm-flex justify-content-end ">
+                            <a href="services.html" class="btn btn-style btn-primary">Services</a>
+                            <a href="contact.html" class="btn btn-style transparant-btn ms-sm-2">Get Started Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//w3l-project-->
+    <!--/testimonials-->
+    <section class="w3l-testimonials" id="testimonials">
+        <!-- /grids -->
+        <div class="cusrtomer-layout py-5">
+            <div class="container py-lg-4 py-md-3 py-2 pb-lg-0">
+
+                <div class="title-content text-center">
+                    <h6 class="title-subw3hny">Testimonials</h6>
+                    <h3 class="title-w3l mb-5">What some of our happy clients<br> say about us</h3>
+                </div>
+                <!-- /grids -->
+                <div class="testimonial-width">
+                    <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team1.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>John wilson</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <p class="quote-info"> <i class="fas fa-quote-left me-2"></i> Lorem ipsum dolor sit amet elit. Velit beatae
+                                        laudantium
+                                        voluptate rem ullam dolore.<i class="fas fa-quote-right ms-2"></i></p>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team2.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Shelly Johnson</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="quote-info"> <i class="fas fa-quote-left me-2"></i> Lorem ipsum dolor sit amet elit. Velit beatae
+                                        laudantium
+                                        voluptate rem ullam dolore.<i class="fas fa-quote-right ms-2"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team3.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Cathrine Wagner</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="quote-info"> <i class="fas fa-quote-left me-2"></i> Lorem ipsum dolor sit amet elit. Velit beatae
+                                        laudantium
+                                        voluptate rem ullam dolore.<i class="fas fa-quote-right ms-2"></i></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team4.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Cuthbert Brain</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="quote-info"> <i class="fas fa-quote-left me-2"></i> Lorem ipsum dolor sit amet elit. Velit beatae
+                                        laudantium
+                                        voluptate rem ullam dolore.<i class="fas fa-quote-right ms-2"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team2.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Russel Reed</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="quote-info"> <i class="fas fa-quote-left me-2"></i> Lorem ipsum dolor sit amet elit. Velit beatae
+                                        laudantium
+                                        voluptate rem ullam dolore.<i class="fas fa-quote-right ms-2"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team1.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Scott Brain</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <blockquote>
+                                        <i class="fas fa-quote-right"></i>
+                                        <q>Lorem ipsum dolor sit amet elit. Velit beatae
+                                            laudantium
+                                            voluptate rem ullam dolore.</q>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <div class="testimonial">
+                                    <div class="testimonial-gds-1">
+                                        <div class="test-img"><img src="{% static 'assets/images/team3.jpg' %}" class="img-fluid" alt="client-img">
+                                        </div>
+                                        <div class="testi-des">
+                                            <div class="peopl align-self">
+                                                <h3>Jane Smith</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <blockquote>
+                                        <i class="fas fa-quote-right"></i>
+                                        <q>Lorem ipsum dolor sit amet elit. Velit beatae
+                                            laudantium
+                                            voluptate rem ullam dolore.</q>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /grids -->
+        </div>
+        <!-- //grids -->
+    </section>
+    <!--//testimonials-->
+    <!--/w3l-footer-29-main-->
+    <footer class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 footer-list-29 footer-1 pe-lg-5">
+                        <h2><a class="navbar-brand" href="index.html">
+                                <span class="w3yellow">JOIN</span>ORA.</a></h2>
+                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">Lorem ipsum dolor sit, amet consectetur elit. Earum mollitia cum
+                            ex
+                            ipsam autem!earum sequi amet.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-4 footer-list-29 footer-3 mt-lg-0 mt-5 pe-lg-5">
+                        <h6 class="footer-title-29">Quick Links</h6>
+                        <div class="footer-listw3-grids">
+                            <ul class="footer-listw3">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="blog.html">Blogs</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+
+                            </ul>
+                            <ul class="footer-listw3">
+                                <li><a href="#privacy">Privacy Policy</a></li>
+                                <li><a href="#term">Terms of use</a></li>
+                                <li><a href="#sales">Sales and Refunds</a></li>
+                                <li><a href="#faq">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Keep Connected</h6>
+                        <p>Get Updates By Subscribe Our Weekly Newsletter</p>
+
+                        <form action="#" class="subscribe" method="post">
+                            <input type="email" name="email" placeholder="Your Email Address" required="">
+                            <button><span class="fas fa-paper-plane"></span></button>
+                        </form>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="#facebook" class="facebook"><span class="fab fa-facebook-f"></span></a>
+                            <a href="#twitter" class="twitter"><span class="fab fa-twitter"></span></a>
+                            <a href="#pinterest"><span class="fab fa-pinterest-p"></span></a>
+                            <a href="#instagram" class="instagram"><span class="fab fa-instagram"></span></a>
+                            <a href="#google" class="google"><span class="fab fa-google-plus-g"></span></a>
+                            <a href="#linkd" class="linkd"><span class="fab fa-linkedin-in"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-copies text-center">
+                    <p class="copy-footer-29"> 2021 Intrados. All rights reserved .</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-angle-up"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+        </script>
+        <!-- //move top -->
+    </footer>
+    <!-- Template JavaScript -->
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/theme-change.js' %}"></script>
+    <!--light-box-files -->
+    <script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.chocolat.js' %}"></script>
+    <script type="text/javascript ">
+        $(function() {
+            $('.w3_agile_portfolio_grid a').Chocolat();
+        });
+
+    </script>
+    <!-- /js for portfolio lightbox -->
+    <!-- stats number counter-->
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countup.js' %}"></script>
+    <script>
+        $('.counter').countUp();
+
+    </script>
+    <!-- //stats number counter -->
+    <!-- owlcarousel -->
+    <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
+    <!-- script for banner slider-->
+    <script>
+        $(document).ready(function() {
+            $('.owl-one').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 1000,
+                autoplayHoverPause: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    480: {
+                        items: 1
+                    },
+                    667: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            })
+        })
+
+    </script>
+    <!-- //script -->
+    <!-- script for tesimonials carousel slider -->
+    <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo1").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    768: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            })
+        })
+
+    </script>
+    <!-- //script for tesimonials carousel slider -->
+    <!-- script for midslider carousel slider -->
+    <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo2").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    768: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 2,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            })
+        })
+
+    </script>
+    <!-- //script for midslider carousel slider -->
+    <!-- video popup -->
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+            $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom'
+            });
+        });
+
+    </script>
+    <!-- //video popup -->
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+
+    <!-- Template JavaScript -->
+    <script>
+        // Handle popup functionality
+        function closePopup(e) {
+            e.preventDefault();
+            const popup = document.getElementById('banner-join-now');
+            if (popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const joinButtons = document.querySelectorAll('a[href="#banner-join-now"]');
+            const popup = document.getElementById('banner-join-now');
+            
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (popup) {
+                        popup.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Rest of your existing form validation code...
+        });
+    </script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script>
+        // Popup functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const joinButtons = document.querySelectorAll('a[href="#banner-join-now"]');
+            const popup = document.getElementById('banner-join-now');
+            const closeButton = popup ? popup.querySelector('.close') : null;
+            
+            // Open popup
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (popup) {
+                        popup.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close popup
+            if (closeButton) {
+                closeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    popup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            // Close when clicking outside
+            if (popup) {
+                popup.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popup && popup.classList.contains('active')) {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+    <!-- //Template JavaScript -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('joinForm');
+        const userType = document.getElementById('userType');
+        const amountField = document.getElementById('amount');
+        const rzpButton = document.getElementById('rzp-button');
+
+        // Update amount based on user type
+        userType.addEventListener('change', function() {
+            if (this.value === 'worker') {
+                amountField.value = '99';
+            } else if (this.value === 'owner') {
+                amountField.value = '199';
+            } else {
+                amountField.value = '';
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!form.checkValidity()) {
+                e.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Disable the button to prevent multiple clicks
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+
+            try {
+                // Get form data
+                const formData = {
+                    first_name: form.querySelector('[name="first_name"]').value,
+                    last_name: form.querySelector('[name="last_name"]').value,
+                    email: form.querySelector('[name="email"]').value,
+                    phone: form.querySelector('[name="phone"]').value,
+                    user_type: userType.value,
+                    amount: amountField.value
+                };
+
+                // First, create an order on your server
+                const response = await fetch('/create-order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: JSON.stringify({
+                        amount: formData.amount * 100, // Convert to paise
+                        user_type: formData.user_type
+                    })
+                });
+
+                const orderData = await response.json();
+
+                if (orderData.error) {
+                    throw new Error(orderData.error);
+                }
+
+                // Razorpay options
+                const options = {
+                    key: '{{ RAZORPAY_KEY_ID }}', // Replace with your Razorpay key
+                    amount: orderData.amount,
+                    currency: 'INR',
+                    name: 'Joinora',
+                    description: 'Account Registration',
+                    order_id: orderData.id,
+                    handler: async function(response) {
+                        try {
+                            // Send payment details to your server for verification
+                            const paymentResponse = await fetch('/handle-payment/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                },
+                                body: JSON.stringify({
+                                    ...formData,
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            });
+
+                            const result = await paymentResponse.json();
+                            
+                            if (result.status === 'success') {
+                                window.location.href = result.redirect;
+                            } else {
+                                throw new Error(result.message || 'Payment failed');
+                            }
+                        } catch (error) {
+                            console.error('Payment processing error:', error);
+                            alert('Error processing payment: ' + error.message);
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                        }
+                    },
+                    prefill: {
+                        name: `${formData.first_name} ${formData.last_name}`.trim(),
+                        email: formData.email,
+                        contact: formData.phone
+                    },
+                    theme: {
+                        color: '#4CAF50'
+                    }
+                };
+
+                // Initialize Razorpay payment
+                const rzp = new Razorpay(options);
+                rzp.open();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred: ' + error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>
