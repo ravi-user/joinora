@@ -31,8 +31,8 @@ ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'home.User'
 
 # Razorpay Configuration
-RAZORPAY_KEY_ID = 'YOUR_RAZORPAY_KEY_ID'  # Replace with your Razorpay key ID
-RAZORPAY_KEY_SECRET = 'YOUR_RAZORPAY_KEY_SECRET'  # Replace with your Razorpay key secret
+RAZORPAY_KEY_ID = 'rzp_test_AEBLdvUMKcvxpz'
+RAZORPAY_KEY_SECRET = 'R0qynWHKNbz1gtbNJIrZ9Tjh'
 
 
 # Application definition
