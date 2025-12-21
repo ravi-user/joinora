@@ -4,11 +4,14 @@ from django.utils import timezone
 
 class User(AbstractUser):
     USER_TYPE_CHOICES = (
-        ('worker', 'Worker'),
-        ('owner', 'Owner'),
+        ('job_seeker', 'Job Seeker'),
+        ('joiner', 'Joiner'),
+        ('part_time', 'Part Time'),
+        ('employer', 'Employer'),
+        ('freelancer', 'Freelancer'),
     )
     
-    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+    user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
     phone = models.CharField(max_length=15, unique=True)
     is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
@@ -24,7 +27,7 @@ class Transaction(models.Model):
         ('failed', 'Failed'),
     )
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions', null=True, blank=True)
     razorpay_payment_id = models.CharField(max_length=100, unique=True)
     razorpay_order_id = models.CharField(max_length=100, unique=True)
     razorpay_signature = models.CharField(max_length=255, blank=True, null=True)

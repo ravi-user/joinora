@@ -20,7 +20,22 @@ def create_order(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            amount = int(float(data.get('amount')))  # Convert to paise
+            role = data.get('role')
+            
+            # Role-based pricing mapping
+            ROLE_PRICING = {
+                'job_seeker': 9900,  # ₹99 in paise
+                'joiner': 14900,     # ₹149 in paise
+                'part_time': 19900,  # ₹199 in paise
+                'employer': 24900,   # ₹249 in paise
+                'freelancer': 24900  # ₹249 in paise
+            }
+            
+            # Validate role and get amount
+            if role not in ROLE_PRICING:
+                return JsonResponse({'error': 'Invalid role selected'}, status=400)
+            
+            amount = ROLE_PRICING[role]
             
             # Create order in Razorpay
             order_data = {
@@ -33,7 +48,8 @@ def create_order(request):
             return JsonResponse({
                 'id': order['id'],
                 'amount': order['amount'],
-                'currency': order['currency']
+                'currency': order['currency'],
+                'key': settings.RAZORPAY_KEY_ID  # Send key for frontend
             })
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
@@ -61,7 +77,16 @@ def handle_payment(request):
                 email = data.get('email')
                 phone = data.get('phone')
                 user_type = data.get('user_type')
-                amount = float(data.get('amount', 0)) / 100  # Convert from paise to rupees
+                
+                # Use role-based pricing from backend (more secure than trusting client data)
+                ROLE_PRICING = {
+                    'job_seeker': 99,
+                    'joiner': 149,
+                    'part_time': 199,
+                    'employer': 249,
+                    'freelancer': 249
+                }
+                amount = ROLE_PRICING.get(user_type, 0)
                 
                 # Create or update user and transaction in a single transaction
                 with transaction.atomic():
@@ -108,23 +133,41 @@ def handle_payment(request):
                 })
                 
             except razorpay.errors.SignatureVerificationError:
-                # Log failed transaction
+                # Log failed transaction with correct amount
+                user_type = data.get('user_type')
+                ROLE_PRICING = {
+                    'job_seeker': 99,
+                    'joiner': 149,
+                    'part_time': 199,
+                    'employer': 249,
+                    'freelancer': 249
+                }
+                failed_amount = ROLE_PRICING.get(user_type, 0)
                 Transaction.objects.create(
                     razorpay_payment_id=data.get('razorpay_payment_id'),
                     razorpay_order_id=data.get('razorpay_order_id'),
                     razorpay_signature=data.get('razorpay_signature'),
-                    amount=float(data.get('amount', 0)) / 100,
+                    amount=failed_amount,
                     status='failed'
                 )
                 return JsonResponse({'error': 'Invalid payment signature'}, status=400)
                 
         except Exception as e:
-            # Log any other errors
+            # Log any other errors with correct amount
+            user_type = data.get('user_type')
+            ROLE_PRICING = {
+                'job_seeker': 99,
+                'joiner': 149,
+                'part_time': 199,
+                'employer': 249,
+                'freelancer': 249
+            }
+            failed_amount = ROLE_PRICING.get(user_type, 0)
             Transaction.objects.create(
                 razorpay_payment_id=data.get('razorpay_payment_id'),
                 razorpay_order_id=data.get('razorpay_order_id'),
                 razorpay_signature=data.get('razorpay_signature'),
-                amount=float(data.get('amount', 0)) / 100,
+                amount=failed_amount,
                 status='failed'
             )
             return JsonResponse({'error': str(e)}, status=400)

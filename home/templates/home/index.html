@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JOINORA  </title>
+    <title>JOINORA </title>
     <!-- google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
@@ -28,13 +28,13 @@
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
-        
+
         /* Show popup when active */
         .pop-overlay.active {
             display: flex;
             opacity: 1;
         }
-        
+
         /* Popup content */
         .popup {
             background: white;
@@ -45,7 +45,7 @@
             position: relative;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Close button */
         .close {
             position: absolute;
@@ -56,29 +56,30 @@
             text-decoration: none;
             cursor: pointer;
         }
-        
+
         .close:hover {
             color: #ff9e00;
         }
-        
+
         /* Form styling */
         .form-group {
             margin-bottom: 1rem;
         }
-        
-        .form-control, .form-select {
+
+        .form-control,
+        .form-select {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        
+
         .invalid-feedback {
             color: #dc3545;
             font-size: 0.875em;
             margin-top: 0.25rem;
         }
-        
+
         .btn-style {
             padding: 0.5rem 1.5rem;
             border-radius: 4px;
@@ -87,12 +88,12 @@
             border: none;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary {
             background-color: #ff9e00;
             color: white;
         }
-        
+
         .btn-primary:hover {
             background-color: #e08a00;
         }
@@ -111,13 +112,13 @@
             visibility: hidden;
             transition: all 0.3s ease-in-out;
         }
-        
+
         /* Show popup when targeted */
         .pop-overlay:target {
             opacity: 1;
             visibility: visible;
         }
-        
+
         /* Popup content styling */
         .popup {
             background: #fff;
@@ -131,7 +132,7 @@
             transform: translate(-50%, -50%);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Close button */
         .close {
             position: absolute;
@@ -143,7 +144,7 @@
             text-decoration: none;
             transition: all 0.3s;
         }
-        
+
         .close:hover {
             color: #ff9e00;
         }
@@ -158,8 +159,10 @@
                 <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="index.html">
                         <span class="w3yellow">Join</span>ora
                     </a></h1>
-                    
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
                     <span class="navbar-toggler-icon fa icon-close fa-times"></span>
                 </button>
@@ -197,7 +200,8 @@
                     <!--/search-right-->
                     <ul class="header-search me-lg-4">
                         <li class="search-right">
-                            <a href="#join-now" class="btn btn-style btn-primary search-btn" title="Join"><span class="fas fa-user-plus me-2" aria-hidden="true"></span> Join</a>
+                            <a href="#join-now" class="btn btn-style btn-primary search-btn" title="Join"><span
+                                    class="fas fa-user-plus me-2" aria-hidden="true"></span> Join</a>
                             <!-- search popup -->
                             <div id="join-now" class="pop-overlay">
                                 <div class="popup">
@@ -206,35 +210,42 @@
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
-                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                                                <input type="text" class="form-control" id="first_name"
+                                                    name="first_name" placeholder="First Name" required>
                                                 <div class="invalid-feedback">
                                                     Please enter your first name
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                                                <input type="text" class="form-control" id="last_name" name="last_name"
+                                                    placeholder="Last Name" required>
                                                 <div class="invalid-feedback">
                                                     Please enter your last name
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="Email Address" required>
                                             <div class="invalid-feedback">
                                                 Please enter a valid email address
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Contact Number" pattern="[0-9]{10}" required>
+                                            <input type="tel" class="form-control" id="phone" name="phone"
+                                                placeholder="Contact Number" pattern="[0-9]{10}" required>
                                             <div class="invalid-feedback">
                                                 Please enter a valid 10-digit phone number
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <select class="form-select" id="user_type" name="user_type" required>
-                                                <option value="" selected disabled>Select Type</option>
-                                                <option value="worker">Worker (₹99)</option>
-                                                <option value="owner">Owner (₹199)</option>
+                                                <option value="" selected disabled>Select Role & Price</option>
+                                                <option value="job_seeker">Job Seeker - ₹99</option>
+                                                <option value="joiner">Joiner - ₹149</option>
+                                                <option value="part_time">Part Time - ₹199</option>
+                                                <option value="employer">Employer - ₹249</option>
+                                                <option value="freelancer">Freelancer - ₹249</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 Please select a user type
@@ -243,22 +254,24 @@
                                         <div class="mb-4">
                                             <div class="input-group">
                                                 <span class="input-group-text">₹</span>
-                                                <input type="text" class="form-control" id="amount" name="amount" value="" readonly required>
+                                                <input type="text" class="form-control" id="amount" name="amount"
+                                                    value="" readonly required>
                                             </div>
                                             <div class="invalid-feedback">
                                                 Please select a user type to see the amount
                                             </div>
                                         </div>
-                                        <button type="submit" id="rzp-button" class="btn btn-primary w-100">Proceed to Payment</button>
+                                        <button type="submit" id="rzp-button" class="btn btn-primary w-100">Proceed to
+                                            Payment</button>
                                     </form>
                                     <script>
                                         // Form validation
-                                        (function() {
+                                        (function () {
                                             'use strict';
                                             const forms = document.querySelectorAll('.needs-validation');
-                                            
+
                                             // Update amount based on user type
-                                            document.getElementById('userType').addEventListener('change', function() {
+                                            document.getElementById('userType').addEventListener('change', function () {
                                                 const amountField = document.getElementById('amount');
                                                 if (this.value === 'worker') {
                                                     amountField.value = '99';
@@ -270,13 +283,13 @@
                                             });
 
                                             // Form validation
-                                            Array.from(forms).forEach(function(form) {
-                                                form.addEventListener('submit', function(event) {
+                                            Array.from(forms).forEach(function (form) {
+                                                form.addEventListener('submit', function (event) {
                                                     if (!form.checkValidity()) {
                                                         event.preventDefault();
                                                         event.stopPropagation();
                                                     }
-                                                    
+
                                                     // Additional validation for amount
                                                     const amountField = document.getElementById('amount');
                                                     if (!amountField.value) {
@@ -284,7 +297,7 @@
                                                     } else {
                                                         amountField.setCustomValidity('');
                                                     }
-                                                    
+
                                                     form.classList.add('was-validated');
                                                 }, false);
                                             });
@@ -428,7 +441,7 @@
                 </div>
             </div> {% endcomment %}
         </div>
-        
+
     </section>
     <!-- //main-slider -->
     <!--/bottom-3-grids-->
@@ -437,89 +450,240 @@
             <!-- Join Now Button -->
             <div class="row justify-content-center mb-4">
                 <div class="col-12 text-center">
-                    <a href="#" class="btn btn-style btn-primary join-now-btn" style="padding: 12px 30px; font-size: 16px; font-weight: 600; border-radius: 4px;">
+                    <a href="#" class="btn btn-style btn-primary join-now-btn"
+                        style="padding: 12px 30px; font-size: 16px; font-weight: 600; border-radius: 4px;">
                         Join Now
                     </a>
                 </div>
             </div>
-            
+
             <!-- Join Now Popup -->
-            <div id="join-now-popup" class="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
-                <div class="popup-content" style="background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; position: relative;">
+            <div id="join-now-popup" class="popup-overlay"
+                style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+                <div class="popup-content"
+                    style="background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; position: relative;">
                     <h3 class="title-w3l two mb-4">Join Us Now</h3>
                     <form method="POST" class="needs-validation" id="joinNowForm" novalidate>
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                                    <div class="invalid-feedback">Please enter your name</div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" id="first_name_2" name="first_name"
+                                    placeholder="First Name" required>
+                                <div class="invalid-feedback">
+                                    Please enter your first name
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                                    <div class="invalid-feedback">Please enter a valid email</div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" id="last_name_2" name="last_name"
+                                    placeholder="Last Name" required>
+                                <div class="invalid-feedback">
+                                    Please enter your last name
                                 </div>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" name="contact" placeholder="Contact Number" required>
-                                    <div class="invalid-feedback">Please enter your contact number</div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <select class="form-select" name="role" required>
-                                        <option value="" selected disabled>Select Role & Price</option>
-                                        <option value="Job Seeker - ₹99">Job Seeker - ₹99</option>
-                                        <option value="Joiner - ₹149">Joiner - ₹149</option>
-                                        <option value="Part Time - ₹199">Part Time - ₹199</option>
-                                        <option value="Employer - ₹249">Employer - ₹249</option>
-                                        <option value="Freelancer - ₹249">Freelancer - ₹249</option>
-                                    </select>
-                                    <div class="invalid-feedback">Please select a role</div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4 text-center">
-                                <button type="submit" class="btn btn-style btn-primary">Process To Pay</button>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email_2" name="email"
+                                placeholder="Email Address" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" id="phone_2" name="phone"
+                                placeholder="Contact Number" pattern="[0-9]{10}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid 10-digit phone number
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" id="user_type_2" name="user_type" required>
+                                <option value="" selected disabled>Select Role & Price</option>
+                                <option value="job_seeker">Job Seeker - ₹99</option>
+                                <option value="joiner">Joiner - ₹149</option>
+                                <option value="part_time">Part Time - ₹199</option>
+                                <option value="employer">Employer - ₹249</option>
+                                <option value="freelancer">Freelancer - ₹249</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a user type
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="text" class="form-control" id="amount_2" name="amount" value="" readonly
+                                    required>
+                            </div>
+                            <div class="invalid-feedback">
+                                Please select a user type to see the amount
+                            </div>
+                        </div>
+                        <button type="submit" id="rzp-button-2" class="btn btn-primary w-100">Proceed to
+                            Payment</button>
                     </form>
-                    <a href="#" class="close-popup" style="position: absolute; top: 15px; right: 20px; font-size: 28px; color: #333; text-decoration: none; font-weight: bold;">×</a>
+                    <a href="#" class="close-popup"
+                        style="position: absolute; top: 15px; right: 20px; font-size: 28px; color: #333; text-decoration: none; font-weight: bold;">×</a>
                 </div>
             </div>
-            
+
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            const joinBtns = document.querySelectorAll('.join-now-btn, .search-btn[href="#join-now"]');
-            const popup = document.getElementById('join-now-popup');
-            const closeBtn = document.querySelector('.close-popup');
-            const form = document.getElementById('joinNowForm');
+                document.addEventListener('DOMContentLoaded', function () {
+                    const joinBtns = document.querySelectorAll('.join-now-btn, .search-btn[href="#join-now"]');
+                    const popup = document.getElementById('join-now-popup');
+                    const closeBtn = document.querySelector('.close-popup');
+                    const form = document.getElementById('joinNowForm');
+                    const userType = document.getElementById('user_type_2');
+                    const amountField = document.getElementById('amount_2');
 
-            // Open popup for all join buttons
-            if (joinBtns.length && popup) {
-                joinBtns.forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        popup.style.display = 'flex';
-                        document.body.style.overflow = 'hidden';
-                    });
+                    // Open popup for all join buttons
+                    if (joinBtns.length && popup) {
+                        joinBtns.forEach(btn => {
+                            btn.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                popup.style.display = 'flex';
+                                document.body.style.overflow = 'hidden';
+                            });
+                        });
+                    }
+
+                    // Close popup
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            popup.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        });
+                    }
+
+                    // Update amount based on user type
+                    if (userType && amountField) {
+                        userType.addEventListener('change', function () {
+                            const rolePricing = {
+                                'job_seeker': '99',
+                                'joiner': '149',
+                                'part_time': '199',
+                                'employer': '249',
+                                'freelancer': '249'
+                            };
+                            amountField.value = rolePricing[this.value] || '';
+                        });
+                    }
+
+                    // Form submission with Razorpay integration
+                    if (form) {
+                        form.addEventListener('submit', async function (e) {
+                            e.preventDefault();
+
+                            if (!form.checkValidity()) {
+                                e.stopPropagation();
+                                form.classList.add('was-validated');
+                                return;
+                            }
+
+                            // Disable the button to prevent multiple clicks
+                            const submitBtn = form.querySelector('button[type="submit"]');
+                            const originalBtnText = submitBtn.innerHTML;
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+
+                            try {
+                                // Get form data
+                                const formData = {
+                                    first_name: form.querySelector('[name="first_name"]').value,
+                                    last_name: form.querySelector('[name="last_name"]').value,
+                                    email: form.querySelector('[name="email"]').value,
+                                    phone: form.querySelector('[name="phone"]').value,
+                                    user_type: userType.value,
+                                    amount: amountField.value
+                                };
+
+                                // Create an order on the server
+                                const response = await fetch('/create-order/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                    },
+                                    body: JSON.stringify({
+                                        role: formData.user_type
+                                    })
+                                });
+
+                                const orderData = await response.json();
+
+                                if (orderData.error) {
+                                    throw new Error(orderData.error);
+                                }
+
+                                // Razorpay options
+                                const options = {
+                                    key: orderData.key,
+                                    amount: orderData.amount,
+                                    currency: 'INR',
+                                    name: 'Joinora',
+                                    description: 'Account Registration',
+                                    order_id: orderData.id,
+                                    handler: async function (response) {
+                                        try {
+                                            // Send payment details to server for verification
+                                            const paymentResponse = await fetch('/handle-payment/', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                                },
+                                                body: JSON.stringify({
+                                                    ...formData,
+                                                    razorpay_payment_id: response.razorpay_payment_id,
+                                                    razorpay_order_id: response.razorpay_order_id,
+                                                    razorpay_signature: response.razorpay_signature
+                                                })
+                                            });
+
+                                            const result = await paymentResponse.json();
+
+                                            if (result.status === 'success') {
+                                                window.location.href = result.redirect;
+                                            } else {
+                                                throw new Error(result.message || 'Payment failed');
+                                            }
+                                        } catch (error) {
+                                            console.error('Payment processing error:', error);
+                                            alert('Error processing payment: ' + error.message);
+                                            submitBtn.disabled = false;
+                                            submitBtn.innerHTML = originalBtnText;
+                                        }
+                                    },
+                                    prefill: {
+                                        name: `${formData.first_name} ${formData.last_name}`.trim(),
+                                        email: formData.email,
+                                        contact: formData.phone
+                                    },
+                                    theme: {
+                                        color: '#ff9e00'
+                                    }
+                                };
+
+                                // Initialize Razorpay payment
+                                const rzp = new Razorpay(options);
+                                rzp.on('payment.failed', function (response) {
+                                    alert('Payment failed. Please try again.');
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerHTML = originalBtnText;
+                                });
+                                rzp.open();
+
+                            } catch (error) {
+                                console.error('Error:', error);
+                                alert('An error occurred: ' + error.message);
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalBtnText;
+                            }
+                        });
+                    }
                 });
-            }
-
-            // Rest of your existing popup code...
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    popup.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                });
-            }
-
-            });
             </script>
-            
+
             <!--/row-1-->
             <div class="row mb-5 pb-lg-4">
                 <div class="col-lg-6 pe-lg-5">
@@ -530,14 +694,16 @@
                 </div>
                 <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4 ps-lg-5">
 
-                    <p class="pr-lg-5">We bring together job seekers, part-time workers, hourly helpers, skilled freelancers, and employers in one trusted network.</p>
+                    <p class="pr-lg-5">We bring together job seekers, part-time workers, hourly helpers, skilled
+                        freelancers, and employers in one trusted network.</p>
                 </div>
             </div>
             <!--//row-1-->
             <div class="row pt-md-0 pt-5">
                 <div class="col-lg-4 col-md-6 mt-md-0 mt-sm-4 px-lg-0">
                     <div class="grids3-info position-relative">
-                        <a href="#" class="d-block zoom"><img src="{% static 'assets/images/g8.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <a href="#" class="d-block zoom"><img src="{% static 'assets/images/g8.jpg' %}" alt=""
+                                class="img-fluid news-image"></a>
                         <div class="w3-grids3-info">
                             <h6><a href="#category" class="category d-block">Living</a></h6>
                             <h4><a href="#">Meet the new creativity</a></h4>
@@ -546,7 +712,8 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mt-md-0 mt-4 px-lg-0 grids3-info2">
                     <div class="grids3-info second position-relative">
-                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g2.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g2.jpg' %}"
+                                alt="" class="img-fluid news-image"></a>
                         <div class="w3-grids3-info second">
                             <h6><a href="#category" class="category d-block">Designs</a></h6>
                             <h4><a href="#">Interior that reflects you</a></h4>
@@ -556,7 +723,8 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mt-lg-0 mt-4 px-lg-0">
                     <div class="grids3-info position-relative">
-                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g4.jpg' %}" alt="" class="img-fluid news-image"></a>
+                        <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g4.jpg' %}"
+                                alt="" class="img-fluid news-image"></a>
                         <div class="w3-grids3-info">
                             <h6><a href="#category" class="category d-block">Innovative</a></h6>
                             <h4><a href="#">Innovative stylish ideas</a></h4>
@@ -568,7 +736,7 @@
     </div>
     <!--//bottom-3-grids-->
 
-       <!-- /home-page-video-popup-->
+    <!-- /home-page-video-popup-->
     <section class="w3l-index5 py-5" id="video">
         <div class="container py-5">
             <div class="history-info align-self text-center py-md-5">
@@ -580,7 +748,8 @@
                     </a>
                     <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
                     <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-                        <iframe src="https://player.vimeo.com/video/444201456" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/444201456" frameborder="0"
+                            allow="autoplay; fullscreen" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -595,7 +764,8 @@
                 <div class="row w3l-passion-mid-grids">
                     <div class="col-lg-6 passion-grid-item-info pe-lg-5 mb-lg-0 mb-5">
 
-                        <div class="content-8-img"><img src="{% static 'assets/images/ab1.jpg' %}" class="img-fluid radius-image" alt=""></div>
+                        <div class="content-8-img"><img src="{% static 'assets/images/ab1.jpg' %}"
+                                class="img-fluid radius-image" alt=""></div>
                     </div>
                     <div class="col-lg-6 w3hny-passion-item w3l-content-8">
                         <h6 class="title-subw3hny mb-1">What We Offer</h6>
@@ -661,7 +831,8 @@
                     <li>
                         <div class="w3_agile_portfolio_grid">
                             <a href="{% static 'assets/images/ab1.jpg' %}">
-                                <img src="{% static 'assets/images/ab1.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <img src="{% static 'assets/images/ab1.jpg' %}" alt=" "
+                                    class="img-fluid radius-image" />
                                 <div class="w3layouts_news_grid_pos">
                                     <div class="wthree_text">
                                         <h3><i class="fas fa-search"></i></h3>
@@ -693,7 +864,8 @@
                         </div>
                         <div class="w3_agile_portfolio_grid mt-4">
                             <a href="{% static 'assets/images/ab3.jpg' %}">
-                                <img src="{% static 'assets/images/ab3.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <img src="{% static 'assets/images/ab3.jpg' %}" alt=" "
+                                    class="img-fluid radius-image" />
                                 <div class="w3layouts_news_grid_pos">
                                     <div class="wthree_text">
                                         <h3><i class="fas fa-search"></i></h3>
@@ -715,7 +887,8 @@
                         </div>
                         <div class="w3_agile_portfolio_grid mt-4">
                             <a href="{% static 'assets/images/ab2.jpg' %}">
-                                <img src="{% static 'assets/images/ab2.jpg' %}" alt=" " class="img-fluid radius-image" />
+                                <img src="{% static 'assets/images/ab2.jpg' %}" alt=" "
+                                    class="img-fluid radius-image" />
                                 <div class="w3layouts_news_grid_pos">
                                     <div class="wthree_text">
                                         <h3><i class="fas fa-search"></i></h3>
@@ -807,14 +980,16 @@
                         <div class="card">
                             <div class="card-header p-0 position-relative border-0">
                                 <a href="blog-single.html">
-                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g7.jpg' %}" alt="Card image cap">
+                                    <img class="card-img-bottom d-block radius-image"
+                                        src="{% static 'assets/images/g7.jpg' %}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body p-0 blog-details">
                                 <h6 class="mt-4">July 12, 2021</h6>
                                 <a href="#admin" class="admin">- by Admin </a>
                                 <br>
-                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice of interior design </a>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice
+                                    of interior design </a>
                                 <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
                                 <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
                             </div>
@@ -824,14 +999,16 @@
                         <div class="card">
                             <div class="card-header p-0 position-relative border-0">
                                 <a href="blog-single.html">
-                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g8.jpg' %}" alt="Card image cap">
+                                    <img class="card-img-bottom d-block radius-image"
+                                        src="{% static 'assets/images/g8.jpg' %}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body p-0 blog-details">
                                 <h6 class="mt-4">July 22, 2021</h6>
                                 <a href="#admin" class="admin">- by Admin </a>
                                 <br>
-                                <a href="blog-single.html" class="blog-desc blog-desc-2">Choose the style, we complete with our file </a>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Choose the style, we complete
+                                    with our file </a>
                                 <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
                                 <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
                             </div>
@@ -841,14 +1018,16 @@
                         <div class="card">
                             <div class="card-header p-0 position-relative border-0">
                                 <a href="blog-single.html">
-                                    <img class="card-img-bottom d-block radius-image" src="{% static 'assets/images/g6.jpg' %}" alt="Card image cap">
+                                    <img class="card-img-bottom d-block radius-image"
+                                        src="{% static 'assets/images/g6.jpg' %}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="card-body p-0 blog-details">
                                 <h6 class="mt-4">July 25, 2021</h6>
                                 <a href="#admin" class="admin">- by Admin </a>
                                 <br>
-                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice of interior design </a>
+                                <a href="blog-single.html" class="blog-desc blog-desc-2">Train yourself for the practice
+                                    of interior design </a>
                                 <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula</p>
                                 <a href="blog-single.html" class="btn btn-style btn-primary mt-lg-4 mt-4">Read More </a>
                             </div>
@@ -872,7 +1051,8 @@
                                 <h5 class="title-subw3hny mb-3">Invite Your Friends</h5>
                                 <!-- <h3 class="title-w3l mb-3">Refer and Get Free Services -->
                                 </h3>
-                                <p>Joinora brings together job seekers, hourly helpers, part-time professionals, freelancers, and employers on one trusted network..</p>
+                                <p>Joinora brings together job seekers, hourly helpers, part-time professionals,
+                                    freelancers, and employers on one trusted network..</p>
                             </div>
                         </div>
                     </div>
@@ -897,7 +1077,8 @@
                     <div class="col-lg-4 footer-list-29 footer-1 pe-lg-5">
                         <h2><a class="navbar-brand" href="index.html">
                                 <span class="w3yellow">JOIN</span>ORA.</a></h2>
-                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">We bring together job seekers, part-time workers, hourly helpers, skilled freelancers, and employers in one trusted network
+                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">We bring together job seekers, part-time workers, hourly
+                            helpers, skilled freelancers, and employers in one trusted network
                         </p>
 
                     </div>
@@ -950,7 +1131,7 @@
         </button>
         <script>
             // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function() {
+            window.onscroll = function () {
                 scrollFunction()
             };
 
@@ -996,7 +1177,7 @@
     <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
     <!-- script for banner slider-->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.owl-one').owlCarousel({
                 loop: true,
                 margin: 0,
@@ -1029,7 +1210,7 @@
     <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#owl-demo1").owlCarousel({
                 loop: true,
                 margin: 20,
@@ -1059,7 +1240,7 @@
     <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#owl-demo2").owlCarousel({
                 loop: true,
                 margin: 20,
@@ -1088,7 +1269,7 @@
     <!-- video popup -->
     <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
                 type: 'inline',
 
@@ -1126,7 +1307,7 @@
     <!-- //video popup -->
     <!-- MENU-JS -->
     <script>
-        $(window).on("scroll", function() {
+        $(window).on("scroll", function () {
             var scroll = $(window).scrollTop();
 
             if (scroll >= 80) {
@@ -1137,14 +1318,14 @@
         });
 
         //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function() {
+        $(".navbar-toggler").on("click", function () {
             $("header").toggleClass("active");
         });
-        $(document).on("ready", function() {
+        $(document).on("ready", function () {
             if ($(window).width() > 991) {
                 $("header").removeClass("active");
             }
-            $(window).on("resize", function() {
+            $(window).on("resize", function () {
                 if ($(window).width() > 991) {
                     $("header").removeClass("active");
                 }
@@ -1156,8 +1337,8 @@
 
     <!-- disable body scroll which navbar is in active -->
     <script>
-        $(function() {
-            $('.navbar-toggler').click(function() {
+        $(function () {
+            $('.navbar-toggler').click(function () {
                 $('body').toggleClass('noscroll');
             })
         });
@@ -1167,11 +1348,11 @@
 
     <!-- Template JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get all join buttons
             const joinButtons = document.querySelectorAll('a[href="#banner-join-now"]');
             const popup = document.getElementById('banner-join-now');
-            
+
             // Function to show popup
             function showPopup() {
                 if (popup) {
@@ -1180,7 +1361,7 @@
                     document.body.style.overflow = 'hidden';
                 }
             }
-            
+
             // Function to hide popup
             function hidePopup() {
                 if (popup) {
@@ -1191,44 +1372,44 @@
                     document.body.style.overflow = 'auto';
                 }
             }
-            
+
             // Add click event to all join buttons
             joinButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     showPopup();
                 });
             });
-            
+
             // Close when clicking the close button
             const closeBtn = popup ? popup.querySelector('.close') : null;
             if (closeBtn) {
-                closeBtn.addEventListener('click', function(e) {
+                closeBtn.addEventListener('click', function (e) {
                     e.preventDefault();
                     hidePopup();
                 });
             }
-            
+
             // Close when clicking outside the popup
             if (popup) {
-                popup.addEventListener('click', function(e) {
+                popup.addEventListener('click', function (e) {
                     if (e.target === this) {
                         hidePopup();
                     }
                 });
             }
-            
+
             // Close with Escape key
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && popup && popup.style.display === 'flex') {
                     hidePopup();
                 }
             });
-            
+
             // Form validation
             const form = document.getElementById('bannerJoinForm');
             if (form) {
-                form.addEventListener('submit', function(event) {
+                form.addEventListener('submit', function (event) {
                     if (!form.checkValidity()) {
                         event.preventDefault();
                         event.stopPropagation();
@@ -1241,15 +1422,15 @@
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <script>
         // Popup functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get elements
             const joinButtons = document.querySelectorAll('a[href="#banner-join-now"]');
             const popup = document.getElementById('banner-join-now');
             const closeButton = popup ? popup.querySelector('.close') : null;
-            
+
             // Open popup
             joinButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     if (popup) {
                         popup.classList.add('active');
@@ -1257,28 +1438,28 @@
                     }
                 });
             });
-            
+
             // Close popup
             if (closeButton) {
-                closeButton.addEventListener('click', function(e) {
+                closeButton.addEventListener('click', function (e) {
                     e.preventDefault();
                     popup.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 });
             }
-            
+
             // Close when clicking outside
             if (popup) {
-                popup.addEventListener('click', function(e) {
+                popup.addEventListener('click', function (e) {
                     if (e.target === this) {
                         this.classList.remove('active');
                         document.body.style.overflow = 'auto';
                     }
                 });
             }
-            
+
             // Close with Escape key
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && popup && popup.classList.contains('active')) {
                     popup.classList.remove('active');
                     document.body.style.overflow = 'auto';
@@ -1289,130 +1470,130 @@
     <!-- //Template JavaScript -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('joinForm');
-        const userType = document.getElementById('userType');
-        const amountField = document.getElementById('amount');
-        const rzpButton = document.getElementById('rzp-button');
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('joinForm');
+            const userType = document.getElementById('userType');
+            const amountField = document.getElementById('amount');
+            const rzpButton = document.getElementById('rzp-button');
 
-        // Update amount based on user type
-        userType.addEventListener('change', function() {
-            if (this.value === 'worker') {
-                amountField.value = '99';
-            } else if (this.value === 'owner') {
-                amountField.value = '199';
-            } else {
-                amountField.value = '';
-            }
-        });
-
-        // Form submission
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!form.checkValidity()) {
-                e.stopPropagation();
-                form.classList.add('was-validated');
-                return;
-            }
-
-            // Disable the button to prevent multiple clicks
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
-
-            try {
-                // Get form data
-                const formData = {
-                    first_name: form.querySelector('[name="first_name"]').value,
-                    last_name: form.querySelector('[name="last_name"]').value,
-                    email: form.querySelector('[name="email"]').value,
-                    phone: form.querySelector('[name="phone"]').value,
-                    user_type: userType.value,
-                    amount: amountField.value
+            // Update amount based on user type
+            userType.addEventListener('change', function () {
+                const rolePricing = {
+                    'job_seeker': '99',
+                    'joiner': '149',
+                    'part_time': '199',
+                    'employer': '249',
+                    'freelancer': '249'
                 };
+                amountField.value = rolePricing[this.value] || '';
+            });
 
-                // First, create an order on your server
-                const response = await fetch('/create-order/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                    },
-                    body: JSON.stringify({
-                        amount: formData.amount * 100, // Convert to paise
-                        user_type: formData.user_type
-                    })
-                });
+            // Form submission
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-                const orderData = await response.json();
-
-                if (orderData.error) {
-                    throw new Error(orderData.error);
+                if (!form.checkValidity()) {
+                    e.stopPropagation();
+                    form.classList.add('was-validated');
+                    return;
                 }
 
-                // Razorpay options
-                const options = {
-                    key: '{{ RAZORPAY_KEY_ID }}', // Replace with your Razorpay key
-                    amount: orderData.amount,
-                    currency: 'INR',
-                    name: 'Joinora',
-                    description: 'Account Registration',
-                    order_id: orderData.id,
-                    handler: async function(response) {
-                        try {
-                            // Send payment details to your server for verification
-                            const paymentResponse = await fetch('/handle-payment/', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                                },
-                                body: JSON.stringify({
-                                    ...formData,
-                                    razorpay_payment_id: response.razorpay_payment_id,
-                                    razorpay_order_id: response.razorpay_order_id,
-                                    razorpay_signature: response.razorpay_signature
-                                })
-                            });
+                // Disable the button to prevent multiple clicks
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
 
-                            const result = await paymentResponse.json();
-                            
-                            if (result.status === 'success') {
-                                window.location.href = result.redirect;
-                            } else {
-                                throw new Error(result.message || 'Payment failed');
-                            }
-                        } catch (error) {
-                            console.error('Payment processing error:', error);
-                            alert('Error processing payment: ' + error.message);
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalBtnText;
-                        }
-                    },
-                    prefill: {
-                        name: `${formData.first_name} ${formData.last_name}`.trim(),
-                        email: formData.email,
-                        contact: formData.phone
-                    },
-                    theme: {
-                        color: '#4CAF50'
+                try {
+                    // Get form data
+                    const formData = {
+                        first_name: form.querySelector('[name="first_name"]').value,
+                        last_name: form.querySelector('[name="last_name"]').value,
+                        email: form.querySelector('[name="email"]').value,
+                        phone: form.querySelector('[name="phone"]').value,
+                        user_type: userType.value,
+                        amount: amountField.value
+                    };
+
+                    // First, create an order on your server
+                    const response = await fetch('/create-order/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                        },
+                        body: JSON.stringify({
+                            role: formData.user_type  // Send role instead of amount
+                        })
+                    });
+
+                    const orderData = await response.json();
+
+                    if (orderData.error) {
+                        throw new Error(orderData.error);
                     }
-                };
 
-                // Initialize Razorpay payment
-                const rzp = new Razorpay(options);
-                rzp.open();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred: ' + error.message);
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
+                    // Razorpay options
+                    const options = {
+                        key: orderData.key, // Use key from backend response
+                        amount: orderData.amount,
+                        currency: 'INR',
+                        name: 'Joinora',
+                        description: 'Account Registration',
+                        order_id: orderData.id,
+                        handler: async function (response) {
+                            try {
+                                // Send payment details to your server for verification
+                                const paymentResponse = await fetch('/handle-payment/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                    },
+                                    body: JSON.stringify({
+                                        ...formData,
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_order_id: response.razorpay_order_id,
+                                        razorpay_signature: response.razorpay_signature
+                                    })
+                                });
+
+                                const result = await paymentResponse.json();
+
+                                if (result.status === 'success') {
+                                    window.location.href = result.redirect;
+                                } else {
+                                    throw new Error(result.message || 'Payment failed');
+                                }
+                            } catch (error) {
+                                console.error('Payment processing error:', error);
+                                alert('Error processing payment: ' + error.message);
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalBtnText;
+                            }
+                        },
+                        prefill: {
+                            name: `${formData.first_name} ${formData.last_name}`.trim(),
+                            email: formData.email,
+                            contact: formData.phone
+                        },
+                        theme: {
+                            color: '#4CAF50'
+                        }
+                    };
+
+                    // Initialize Razorpay payment
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
+            });
         });
-    });
     </script>
 
 </body>
