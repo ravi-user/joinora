@@ -349,7 +349,7 @@
                 <div class="slider-info banner-view banner-top1">
                     <div class="container">
                         <div class="banner-info header-hero-19">
-                            <h5>Say Hello</h5>
+                            <h5>Welcome</h5>
                             <h3 class="title-hero-19">To Joinora.</h3>
 
                             <!-- <a href="#banner-join-now" class="btn btn-style btn-banner mt-sm-5 mt-4">Join Now </a> -->
@@ -466,20 +466,20 @@
                     <form method="POST" class="needs-validation" id="joinNowForm" novalidate>
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-6 mb-3">
+                            <div class="mb-3">
                                 <input type="text" class="form-control" id="first_name_2" name="first_name"
-                                    placeholder="First Name" required>
+                                    placeholder="Please Enter Your Full Name" required>
                                 <div class="invalid-feedback">
-                                    Please enter your first name
+                                    Please enter your full name
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            {% comment %} <div class="col-md-6 mb-3">
                                 <input type="text" class="form-control" id="last_name_2" name="last_name"
                                     placeholder="Last Name" required>
                                 <div class="invalid-feedback">
                                     Please enter your last name
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                         <div class="mb-3">
                             <input type="email" class="form-control" id="email_2" name="email"
@@ -705,8 +705,8 @@
                         <a href="#" class="d-block zoom"><img src="{% static 'assets/images/g8.jpg' %}" alt=""
                                 class="img-fluid news-image"></a>
                         <div class="w3-grids3-info">
-                            <h6><a href="#category" class="category d-block">Living</a></h6>
-                            <h4><a href="#">Meet the new creativity</a></h4>
+                            <h6><a href="#category" class="category d-block">Grow Faster</a></h6>
+                            <h4><a href="#">Connects job seekers and recruiters on trusted platform</a></h4>
                         </div>
                     </div>
                 </div>
@@ -715,8 +715,8 @@
                         <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g2.jpg' %}"
                                 alt="" class="img-fluid news-image"></a>
                         <div class="w3-grids3-info second">
-                            <h6><a href="#category" class="category d-block">Designs</a></h6>
-                            <h4><a href="#">Interior that reflects you</a></h4>
+                            <h6><a href="#category" class="category d-block">Match Your Skills</a></h6>
+                            <h4><a href="#">Explore verified job opportunities across multiple industries</a></h4>
 
                         </div>
                     </div>
@@ -726,8 +726,8 @@
                         <a href="blog-single.html" class="d-block zoom"><img src="{% static 'assets/images/g4.jpg' %}"
                                 alt="" class="img-fluid news-image"></a>
                         <div class="w3-grids3-info">
-                            <h6><a href="#category" class="category d-block">Innovative</a></h6>
-                            <h4><a href="#">Innovative stylish ideas</a></h4>
+                            <h6><a href="#category" class="category d-block">Hire Faster</a></h6>
+                            <h4><a href="#">Review candidates, and connect directly</a></h4>
                         </div>
                     </div>
                 </div>
@@ -769,25 +769,23 @@
                     </div>
                     <div class="col-lg-6 w3hny-passion-item w3l-content-8">
                         <h6 class="title-subw3hny mb-1">What We Offer</h6>
-                        <h3 class="title-w3l mb-3">The Luxury Apartment of sepcial interiors.</h3>
-                        <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non ipsum soluta
-                            perferendis
-                            veniam qui esse magnam commodi quisquam vitae labore nemo at voluptatem.</p>
+                        <h3 class="title-w3l mb-3">Simple & Trusted Job Opportunities for Everyone Alternate.</h3>
+                        <p class="mb-5">Joinora is a simple job discovery platform designed to help job seekers find genuine opportunities and employers reach the right candidates</p>
                         <ul class="w3-list-icons-grids">
                             <li class="icon-list-item-gd">
                                 <div class="icon-gd"><i aria-hidden="true" class="fas fa-hotel"></i>
                                 </div>
                                 <div class="icon-inf">
-                                    <h5>Residential</h5>
-                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                    <h5>Job Seekers</h5>
+                                    <p class="text-para">Browse verified job listings across multiple industries and apply easily without paying any registration or application fees </p>
                                 </div>
                             </li>
                             <li class="icon-list-item-gd">
                                 <div class="icon-gd"><i aria-hidden="true" class="fas fa-door-open"></i>
                                 </div>
                                 <div class="icon-inf">
-                                    <h5>Commercial</h5>
-                                    <p class="text-para">Lorem ipsum dolor sit amet, elit. </p>
+                                    <h5>Employers</h5>
+                                    <p class="text-para">Post job openings quickly and reach relevant candidates through a simple and affordable hiring platform </p>
                                 </div>
                             </li>
                             <li class="icon-list-item-gd">
@@ -910,10 +908,8 @@
             <div class="row">
                 <div class="col-lg-5 title-content text-left pe-lg-5 mb-lg-0 mb-5">
                     <h6 class="title-subw3hny mb-1">Stats</h6>
-                    <h3 class="title-w3l mb-3">Modern Of Living</h3>
-                    <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non ipsum soluta
-                        perferendis
-                        veniam qui esse magnam commodi quisquam vitae labore nemo at voluptatem.</p>
+                    <h3 class="title-w3l mb-3">Building Trust in Job Discovery</h3>
+                    <p class="mb-5">Joinora is a growing job discovery platform focused on simplicity, transparency, and accessibility</p>
                     <div class="row w3l-stats-section stats-con mt-4" id="stats">
                         <div class="col-6 stats_info counter_grid">
                             <p class="counter">1500 </p>
@@ -1051,8 +1047,7 @@
                                 <h5 class="title-subw3hny mb-3">Invite Your Friends</h5>
                                 <!-- <h3 class="title-w3l mb-3">Refer and Get Free Services -->
                                 </h3>
-                                <p>Joinora brings together job seekers, hourly helpers, part-time professionals,
-                                    freelancers, and employers on one trusted network..</p>
+                                <p>Find work, hire people, collaborate, or offer your services — all in one place.</p>
                             </div>
                         </div>
                     </div>
@@ -1077,8 +1072,7 @@
                     <div class="col-lg-4 footer-list-29 footer-1 pe-lg-5">
                         <h2><a class="navbar-brand" href="index.html">
                                 <span class="w3yellow">JOIN</span>ORA.</a></h2>
-                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">We bring together job seekers, part-time workers, hourly
-                            helpers, skilled freelancers, and employers in one trusted network
+                        <p class="parahny pr-lg-5 mr-xl-4 mb-4">A single platform to connect people, work, and opportunities — locally and beyond.
                         </p>
 
                     </div>
