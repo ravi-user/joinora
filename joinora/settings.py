@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-@g8np*d1^q2vy5)f+ea25=9@8%^+mn(7xs2le*f+9!a!ev8&hk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    "https://joinora.onrender.com",
+    "https://www.joinora.onrender.com",
+    "https://joinora.co.in",
+    "https://www.joinora.co.in",
+]
+
+ALLOWED_HOSTS = ["joinora.onrender.com", "joinora.co.in", "www.joinora.co.in", "localhost", "127.0.0.1"]
 
 # Custom User Model
 AUTH_USER_MODEL = 'home.User'
