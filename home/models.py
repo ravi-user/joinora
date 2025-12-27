@@ -12,13 +12,13 @@ class User(AbstractUser):
     )
     
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
-    phone = models.CharField(max_length=15, unique=True)
+    phone = models.CharField(max_length=15, null=True, blank= True)
     is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.user_type})"
+        return f"{self.first_name} ({self.user_type})"
 
 class Transaction(models.Model):
     PAYMENT_STATUS_CHOICES = (

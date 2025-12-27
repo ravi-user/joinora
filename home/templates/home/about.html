@@ -80,7 +80,7 @@
             <div class="container">
                 <div class="row w3l-passion-mid-grids mb-5 pb-lg-5">
                     <div class="col-lg-6 w3hny-passion-item">
-                        <img src="{% static 'assets/images/g3.jpg' %}" alt="" class="img-fluid radius-image">
+                        <img src="{% static 'assets/images/middlee.jpg' %}" alt="" class="img-fluid radius-image">
                     </div>
                     <div class="col-lg-6 passion-grid-item-info ps-lg-5 mt-lg-0 mt-5">
                         <h6 class="title-subw3hny mb-1">About Us</h6>
@@ -221,11 +221,8 @@
                         <h6 class="footer-title-29">Quick Links</h6>
                         <div class="footer-listw3-grids">
                             <ul class="footer-listw3">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="blog.html">Blogs</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About</a></li>
                             </ul>
                             <ul class="footer-listw3">
                                 <li><a href="#privacy">Privacy Policy</a></li>
