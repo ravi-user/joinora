@@ -44,7 +44,6 @@ AUTH_USER_MODEL = 'home.User'
 # Razorpay Configuration
 RAZORPAY_KEY_ID = env('RAZORPAY_KEY_ID')
 RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET')
-print('RAZORPAY_KEY_ID===>>> ', RAZORPAY_KEY_ID)
 
 # Application definition
 
