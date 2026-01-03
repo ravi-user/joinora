@@ -12,7 +12,8 @@ class User(AbstractUser):
     )
     
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
-    phone = models.CharField(max_length=15, null=True, blank= True)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    reference_code = models.CharField(max_length=50, null=True, blank=True, help_text='Optional reference code')
     is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)

@@ -77,6 +77,7 @@ def handle_payment(request):
                 email = data.get('email')
                 phone = data.get('phone')
                 user_type = data.get('user_type')
+                reference_code = data.get('ref_code', '').strip() or None
                 
                 # Use role-based pricing from backend (more secure than trusting client data)
                 ROLE_PRICING = {
@@ -99,6 +100,7 @@ def handle_payment(request):
                             'last_name': last_name,
                             'phone': phone,
                             'user_type': user_type,
+                            'reference_code': reference_code,
                             'is_paid': True
                         }
                     )
@@ -109,6 +111,8 @@ def handle_payment(request):
                         user.last_name = last_name
                         user.phone = phone
                         user.user_type = user_type
+                        if reference_code:  # Only update reference code if provided
+                            user.reference_code = reference_code
                         user.is_paid = True
                         user.save()
                     
