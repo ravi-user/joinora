@@ -228,7 +228,7 @@ Our team section will be updated as we onboard real professionals, partners, and
                                 <li><a href="{% url 'about' %}">About</a></li>
                             </ul>
                             <ul class="footer-listw3">
-                                <li><a href="#privacy">Privacy Policy</a></li>
+                                <li><a href="#" id="terms-link">Terms & Condition</a></li>
                                 <!-- <li><a href="#term">Terms of use</a></li>
                                 <li><a href="#sales">Sales and Refunds</a></li>
                                 <li><a href="#faq">FAQ</a></li> -->
@@ -287,6 +287,30 @@ Our team section will be updated as we onboard real professionals, partners, and
         </script>
         <!-- //move top -->
     </footer>
+
+    <!-- Terms & Conditions Popup -->
+    <div id="terms-popup" class="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="popup-content" style="background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative;">
+            <h3 class="title-w3l two mb-4">Terms & Conditions</h3>
+            <div class="terms-content">
+                <h5>1. Introduction</h5>
+                <p>Welcome to JoinOra. These terms and conditions outline the rules and regulations for the use of our platform.</p>
+                
+                <h5>2. User Responsibilities</h5>
+                <p>You agree to use this website responsibly, respectfully, and for its intended purpose only.</p>
+                
+                <h5>3. Privacy Policy</h5>
+                <p>Your privacy is important to us. We take care to protect your personal information and do not share it with third parties.</p>
+                
+                <h5>4. Changes to Terms</h5>
+                <p>We reserve the right to modify these terms at any time. Your continued use of the platform after such changes constitutes your acceptance of the new terms.</p>
+            </div>
+            <div class="text-center mt-4">
+                <button id="close-terms" class="btn btn-style btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Template JavaScript -->
     <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'assets/js/theme-change.js' %}"></script>
@@ -315,6 +339,38 @@ Our team section will be updated as we onboard real professionals, partners, and
                     $("header").removeClass("active");
                 }
             });
+        });
+
+        // Terms & Conditions Popup
+        document.addEventListener('DOMContentLoaded', function() {
+            const termsLink = document.getElementById('terms-link');
+            const termsPopup = document.getElementById('terms-popup');
+            const closeTerms = document.getElementById('close-terms');
+            
+            if (termsLink) {
+                termsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    termsPopup.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeTerms) {
+                closeTerms.addEventListener('click', function() {
+                    termsPopup.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            // Close when clicking outside the popup content
+            if (termsPopup) {
+                termsPopup.addEventListener('click', function(e) {
+                    if (e.target === termsPopup) {
+                        termsPopup.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
         });
 
     </script>
