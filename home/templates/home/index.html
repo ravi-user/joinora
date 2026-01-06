@@ -276,10 +276,10 @@
                                                 <option value="job_seeker">Job Seeker - ₹99</option>
                                                 <option value="joiner">Freelancer - ₹199</option>
                                                 <option value="part_time">Professional - ₹299</option>
-                                                <option value="employer">Premium Freelancer - ₹429</option>
+                                                {% comment %} <option value="employer">Premium Freelancer - ₹429</option> {% endcomment %}
                                                 <option value="freelancer">Employer  - ₹319</option>
-                                                <option value="freelancer">Premium Employer  - ₹699</option>
-                                                <option value="freelancer">Work Outsourcing  - ₹499</option>
+                                                {% comment %} <option value="freelancer">Premium Employer  - ₹699</option>
+                                                <option value="freelancer">Work Outsourcing  - ₹499</option> {% endcomment %}
                                             </select>
                                             <div class="invalid-feedback">
                                                 Please select a user type
@@ -530,6 +530,13 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            <input type="text" class="form-control" id="ref_code_2" name="ref_code"
+                                placeholder="Enter refence code">
+                            <div class="invalid-feedback">
+                                Enter refence code
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <select class="form-select" id="user_type_2" name="user_type" required>
                                 <option value="" selected disabled>Select Role & Price</option>
                                 <option value="job_seeker">Job Seeker - ₹99</option>
@@ -595,9 +602,9 @@
                             const rolePricing = {
                                 'job_seeker': '99',
                                 'joiner': '149',
-                                'part_time': '199',
-                                'employer': '249',
-                                'freelancer': '249'
+                                'part_time': '319',
+                                'employer': '429',
+                                'freelancer': '299'
                             };
                             amountField.value = rolePricing[this.value] || '';
                         });
@@ -1431,9 +1438,9 @@
                 const rolePricing = {
                     'job_seeker': '99',
                     'joiner': '149',
-                    'part_time': '199',
-                    'employer': '249',
-                    'freelancer': '249'
+                    'part_time': '319',
+                    'employer': '429',
+                    'freelancer': '299'
                 };
                 amountField.value = rolePricing[this.value] || '';
             });
@@ -1458,10 +1465,12 @@
                     // Get form data
                     const formData = {
                         first_name: form.querySelector('[name="first_name"]').value,
+                        last_name: form.querySelector('[name="last_name"]').value,
                         email: form.querySelector('[name="email"]').value,
                         phone: form.querySelector('[name="phone"]').value,
                         user_type: userType.value,
-                        amount: amountField.value
+                        amount: amountField.value,
+                        ref_code: document.getElementById('ref_code_2')?.value || ''
                     };
 
                     // First, create an order on your server
@@ -1492,6 +1501,9 @@
                         order_id: orderData.id,
                         handler: async function (response) {
                             try {
+                                // Get the reference code again in case it was changed
+                                const refCode = document.getElementById('ref_code_2')?.value || '';
+
                                 // Send payment details to your server for verification
                                 const paymentResponse = await fetch('/handle-payment/', {
                                     method: 'POST',
@@ -1500,7 +1512,13 @@
                                         'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
                                     },
                                     body: JSON.stringify({
-                                        ...formData,
+                                        first_name: formData.first_name,
+                                        last_name: formData.last_name,
+                                        email: formData.email,
+                                        phone: formData.phone,
+                                        user_type: formData.user_type,
+                                        amount: formData.amount,
+                                        ref_code: refCode,
                                         razorpay_payment_id: response.razorpay_payment_id,
                                         razorpay_order_id: response.razorpay_order_id,
                                         razorpay_signature: response.razorpay_signature
