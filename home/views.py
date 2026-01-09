@@ -26,9 +26,9 @@ def create_order(request):
             ROLE_PRICING = {
                 'job_seeker': 9900,  # ₹99 in paise
                 'joiner': 14900,     # ₹149 in paise
-                'part_time': 19900,  # ₹199 in paise
-                'employer': 24900,   # ₹249 in paise
-                'freelancer': 24900  # ₹249 in paise
+                'part_time': 31900,  # ₹199 in paise
+                'employer': 42900,   # ₹249 in paise
+                'freelancer': 29900  # ₹249 in paise
             }
             
             # Validate role and get amount
@@ -60,6 +60,7 @@ def handle_payment(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
+            print("Raw request data:", data)  
             
             # Verify payment signature
             params_dict = {
@@ -83,9 +84,9 @@ def handle_payment(request):
                 ROLE_PRICING = {
                     'job_seeker': 99,
                     'joiner': 149,
-                    'part_time': 199,
-                    'employer': 249,
-                    'freelancer': 249
+                    'part_time': 319,
+                    'employer': 429,
+                    'freelancer': 299
                 }
                 amount = ROLE_PRICING.get(user_type, 0)
                 
@@ -104,7 +105,8 @@ def handle_payment(request):
                             'is_paid': True
                         }
                     )
-                    
+                    print(f"User {'created' if created else 'updated'}. Reference code set to: {reference_code}")  # Debug log
+
                     # If user already exists, update their information
                     if not created:
                         user.first_name = first_name
@@ -113,6 +115,7 @@ def handle_payment(request):
                         user.user_type = user_type
                         if reference_code:  # Only update reference code if provided
                             user.reference_code = reference_code
+                            print(f"Updating reference_code to: {reference_code}")  # Debug log
                         user.is_paid = True
                         user.save()
                     
@@ -142,9 +145,9 @@ def handle_payment(request):
                 ROLE_PRICING = {
                     'job_seeker': 99,
                     'joiner': 149,
-                    'part_time': 199,
-                    'employer': 249,
-                    'freelancer': 249
+                    'part_time': 319,
+                    'employer': 429,
+                    'freelancer': 299
                 }
                 failed_amount = ROLE_PRICING.get(user_type, 0)
                 Transaction.objects.create(
@@ -162,9 +165,9 @@ def handle_payment(request):
             ROLE_PRICING = {
                 'job_seeker': 99,
                 'joiner': 149,
-                'part_time': 199,
-                'employer': 249,
-                'freelancer': 249
+                'part_time': 319,
+                'employer': 429,
+                'freelancer': 299
             }
             failed_amount = ROLE_PRICING.get(user_type, 0)
             Transaction.objects.create(
