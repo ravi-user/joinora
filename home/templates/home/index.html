@@ -332,7 +332,13 @@
                                                 Please select a user type to see the amount
                                             </div>
                                         </div>
-                                        <button type="submit" id="rzp-button" class="btn btn-primary w-100">Proceed to
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+                                            <label class="form-check-label" for="termsCheckbox">
+                                                I accept the <a href="#" id="terms-link-1" class="text-primary">Terms & Conditions</a>
+                                            </label>
+                                        </div>
+                                        <button type="submit" id="rzp-button" class="btn btn-primary w-100" disabled>Proceed to
                                             Payment</button>
                                     </form>
                                     <script>
@@ -549,8 +555,14 @@
                                 Please select a user type to see the amount
                             </div>
                         </div>
-                        <button type="submit" id="rzp-button-2" class="btn btn-primary w-100">Proceed to
-                            Payment</button>
+                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="termsCheckbox2" required>
+                                            <label class="form-check-label" for="termsCheckbox2">
+                                                I accept the <a href="#" id="terms-link-2" class="text-primary">Terms & Conditions</a>
+                                            </label>
+                                        </div>
+                                        <button type="submit" id="rzp-button-2" class="btn btn-primary w-100" disabled>Proceed to
+                                            Payment</button>
                     </form>
                     <a href="#" class="close-popup"
                         style="position: absolute; top: 15px; right: 20px; font-size: 28px; color: #333; text-decoration: none; font-weight: bold;">×</a>
@@ -1040,7 +1052,7 @@
                                 <li><a href="{% url 'about' %}">About</a></li>
                             </ul>
                             <ul class="footer-listw3">
-                                <li><a href="#" id="terms-link">Terms & Condition</a></li>
+                                <li><a href="#" id="terms-link-4">Terms & Condition</a></li>
                                 <!-- <li><a href="#term">Terms of use</a></li> -->
                                 <!-- <li><a href="#sales">Sales and Refunds</a></li>
                                 <li><a href="#faq">FAQ</a></li> -->
@@ -1407,8 +1419,8 @@ Any disputes shall be subject to the jurisdiction of Indian courts..</p>
             // Close when clicking outside the popup content
             if (termsPopup) {
                 termsPopup.addEventListener('click', function(e) {
-                    if (e.target === termsPopup) {
-                        termsPopup.style.display = 'none';
+                    if (e.target === this) {
+                        this.style.display = 'none';
                         document.body.style.overflow = 'auto';
                     }
                 });
@@ -1488,56 +1500,50 @@ Any disputes shall be subject to the jurisdiction of Indian courts..</p>
     </script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <script>
-        // Popup functionality
+        // Enable/disable payment buttons based on terms checkbox
         document.addEventListener('DOMContentLoaded', function () {
-            // Get elements
-            const joinButtons = document.querySelectorAll('a[href="#banner-join-now"]');
-            const popup = document.getElementById('banner-join-now');
-            const closeButton = popup ? popup.querySelector('.close') : null;
-
-            // Open popup
-            joinButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (popup) {
-                        popup.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            });
-
-            // Close popup
-            if (closeButton) {
-                closeButton.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    popup.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+            // For first form
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            const paymentButton = document.getElementById('rzp-button');
+            
+            if (termsCheckbox && paymentButton) {
+                termsCheckbox.addEventListener('change', function() {
+                    paymentButton.disabled = !this.checked;
                 });
             }
 
-            // Close when clicking outside
-            if (popup) {
-                popup.addEventListener('click', function (e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
+            // For second form (popup)
+            const termsCheckbox2 = document.getElementById('termsCheckbox2');
+            const paymentButton2 = document.getElementById('rzp-button-2');
+            
+            if (termsCheckbox2 && paymentButton2) {
+                termsCheckbox2.addEventListener('change', function() {
+                    paymentButton2.disabled = !this.checked;
                 });
             }
 
-            // Close with Escape key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && popup && popup.classList.contains('active')) {
-                    popup.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+            // Add click handlers for all terms links to show terms popup
+            const termsLinks = ['terms-link-1', 'terms-link-2', 'terms-link-3', 'terms-link-4'];
+            
+            termsLinks.forEach(linkId => {
+                const link = document.getElementById(linkId);
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Make sure the showPopup function is available in the global scope
+                        if (typeof showPopup === 'function') {
+                            showPopup();
+                        } else {
+                            // Fallback to direct popup display if showPopup is not available
+                            const termsPopup = document.getElementById('terms-popup');
+                            if (termsPopup) {
+                                termsPopup.style.display = 'flex';
+                                document.body.style.overflow = 'hidden';
+                            }
+                        }
+                    });
                 }
             });
-        });
-    </script>
-    <!-- //Template JavaScript -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('joinForm');
             const userType = document.getElementById('userType');
             const amountField = document.getElementById('amount');
