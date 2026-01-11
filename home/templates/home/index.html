@@ -213,11 +213,13 @@
         background-color: #ff9e00;
         color: #fff;
     }
-    
+
     #terms-popup .btn-primary:hover {
         background-color: #e08a00;
     }
 </style>
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -527,9 +529,16 @@
                         </div>
                         <div class="mb-3">
                             <input type="text" class="form-control" id="ref_code_2" name="ref_code"
-                                placeholder="Enter refence code">
+                                placeholder="Enter reference code">
                             <div class="invalid-feedback">
-                                Enter refence code
+                                Enter reference code
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="address_2" name="address" 
+                                placeholder="Enter your full address" rows="2" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter your address
                             </div>
                         </div>
                         <div class="mb-3">
@@ -636,7 +645,9 @@
                                     email: form.querySelector('[name="email"]').value,
                                     phone: form.querySelector('[name="phone"]').value,
                                     user_type: userType.value,
-                                    amount: amountField.value
+                                    amount: amountField.value,
+                                    ref_code: document.getElementById('ref_code_2')?.value || '',
+                                    address: document.getElementById('address_2')?.value || ''
                                 };
 
                                 // Create an order on the server
@@ -736,7 +747,8 @@
                 </div>
                 <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4 ps-lg-5">
 
-                    <p class="pr-lg-5">We bring together job seekers, part-time workers, hourly helpers, skilled
+                    <p class="mb-4 text-center">
+                        We bring together job seekers, part-time workers, hourly helpers, skilled
                         freelancers, and employers in one trusted network.</p>
                 </div>
             </div>
@@ -901,9 +913,9 @@
     </section>
     <!--//w3l-midslider-->
 
-    <!-- /blog-grids -->
-    <section class="w3l-text-11 py-5 pt-0">
-        <div class="text11 py-md-5 py-2 pt-0">
+    <!--/w3l-text-11-main-->
+    <section class="w3l-text-11 py-5">
+        <div class="text11 py-md-5 py-2">
             <div class="container">
                 <div class="title-content text-center">
                     <h6 class="title-subw3hny text-center">WHY</h6>
@@ -1586,7 +1598,8 @@ Any disputes shall be subject to the jurisdiction of Indian courts..</p>
                         phone: form.querySelector('[name="phone"]').value,
                         user_type: userType.value,
                         amount: amountField.value,
-                        ref_code: document.getElementById('ref_code_2')?.value || ''
+                        ref_code: document.getElementById('ref_code')?.value || '',
+                        address: document.getElementById('address')?.value || ''
                     };
 
                     // First, create an order on your server
